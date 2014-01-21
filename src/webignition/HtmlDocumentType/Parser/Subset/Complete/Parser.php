@@ -11,7 +11,7 @@ use webignition\HtmlDocumentType\Parser\Subset\Parser as BaseParser;
  */
 class Parser extends BaseParser {      
     
-    const PATTERN_TEMPLATE = '/^<![Dd][Oo][Cc][Tt][Yy][Pp][Ee]\s+[Hh][Tt][Mm][Ll]\s+[Pp][Uu][Bb][Ll][Ii][Cc]\s+{{fpi-quote}}[^{{fpi-quote}}]+{{fpi-quote}}\s+{{uri-quote}}[^{{uri-quote}}]+{{uri-quote}}\s*>$/';
+    const PATTERN_TEMPLATE = '/^<![Dd][Oo][Cc][Tt][Yy][Pp][Ee]\s+[Hh][Tt][Mm][Ll]\s+[Pp][Uu][Bb][Ll][Ii][Cc]\s+{{fpi-quote}}[^{{fpi-quote}}]*{{fpi-quote}}\s+{{uri-quote}}[^{{uri-quote}}]*{{uri-quote}}\s*>$/';
     
     private $fpiQuoteCharacter = null;
     private $uriQuoteCharacter = null;
@@ -49,8 +49,11 @@ class Parser extends BaseParser {
         $thirdDoubleQuotePosition = strpos($this->getSourceDoctype(), $this->getUriQuoteCharacter(), $secondDoubleQuotePosition + 1);
         $lastDoubleQuotePosition = strrpos($this->getSourceDoctype(), $this->getUriQuoteCharacter()); 
         
-        $this->setFpi(substr($this->getSourceDoctype(), $firstDoubleQuotePosition + 1, $secondDoubleQuotePosition - $firstDoubleQuotePosition - 1));
-        $this->setUri(substr($this->getSourceDoctype(), $thirdDoubleQuotePosition + 1, $lastDoubleQuotePosition - $thirdDoubleQuotePosition - 1));
+        $fpi = substr($this->getSourceDoctype(), $firstDoubleQuotePosition + 1, $secondDoubleQuotePosition - $firstDoubleQuotePosition - 1);
+        $uri = substr($this->getSourceDoctype(), $thirdDoubleQuotePosition + 1, $lastDoubleQuotePosition - $thirdDoubleQuotePosition - 1);
+        
+        $this->setFpi($fpi);
+        $this->setUri((trim($uri) == '') ? null : $uri);
     }       
   
 }

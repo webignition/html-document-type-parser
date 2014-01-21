@@ -11,7 +11,7 @@ use webignition\HtmlDocumentType\Parser\Subset\Parser as BaseParser;
  */
 class Parser extends BaseParser {      
 
-    const PATTERN_TEMPLATE = '/^<![Dd][Oo][Cc][Tt][Yy][Pp][Ee]\s+[Hh][Tt][Mm][Ll]\s+[Pp][Uu][Bb][Ll][Ii][Cc]\s+{{quote}}[^{{quote}}]+{{quote}}\s*>$/';
+    const PATTERN_TEMPLATE = '/^<![Dd][Oo][Cc][Tt][Yy][Pp][Ee]\s+[Hh][Tt][Mm][Ll]\s+[Pp][Uu][Bb][Ll][Ii][Cc]\s+{{quote}}[^{{quote}}]*{{quote}}\s*>$/';
     
     private $fpiQuoteCharacter = null;
     
