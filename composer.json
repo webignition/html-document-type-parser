@@ -1,0 +1,26 @@
+{
+    "name": "webignition/html-document-type-parser",
+    "description": "Parse a public html document type (so many caveats), extract FPI and URI",
+    "keywords": ["html", "document", "doctype", "parser"],
+    "homepage": "https://github.com/webignition/html-document-type-parser",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jon Cram",
+            "email": "jon@webignition.net"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "webignition\\Tests": "tests/",
+            "": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/class-loader": "*",
+        "icanboogie/inflector":"1.0",
+        "webignition/html-document-type-generator":">=0.5.4,<1"
+    },            
+    "minimum-stability":"stable"
+}
