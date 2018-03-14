@@ -1,4 +1,1 @@
-html-document-type-parser
-=========================
-
-Parse a public html document type (so many caveats), extract FPI and URI
+This package has been abandoned and superseded by [webignition/html-document-type](https://github.com/webignition/html-document-type)
